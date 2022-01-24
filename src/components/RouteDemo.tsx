@@ -8,10 +8,10 @@ const RouteDemo = () => {
     return <>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/dashboard" element={<Auth element={<Dashboard />} />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Auth element={<Home/>}/>}/>
+                <Route path="/dashboard" element={<Auth role={['admin']} element={<Dashboard/>}/>}/>
+                <Route path="/home" element={<Auth element={<Home/>}/>}/>
+                <Route path="/login" element={<Login/>}/>
             </Routes>
         </BrowserRouter>,
     </>
