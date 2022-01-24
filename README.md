@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Getting Started with Routing and Auth routes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### To run
 
-## Available Scripts
+```shell
+npm i -g pnpm
+pnpm install
+npm start
+```
 
-In the project directory, you can run:
 
-### `npm start`
+This example code has React router dom integrated, and we will see how we can use
+Protected routes to show some Page based on user authentication and roles
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Auth component currently accepts 2 props. `role` and `element`. Correct the code so that
+   1. Auth component should load the the logged in user details from UserService fetchLoggedInUserDetails function
+   2. The function mock an actual api call and returns data after 2 seconds, Show the loader component till data is not being loaded from the function
+   3. if role props is empty or null, and loggedInUserDetails returns valid user, then render the component it is supposed to render
+   4. if role props have some role, and loggedInUserDetails has one of the role as in props, render the component it is supposed to render
+   5. if the role props have some role, and loggedInUserDetails role does not belong to any one of them, show the forbidden access component
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2. When navigating to / or /home page, the loader component should be shown for some time till data is not being loaded, then it should render the Home component
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. When navigating to /dashboard page, the loader component should be shown for some time till data is not being loadedm then based on user role is admin or regular, either render the dashboard component or forbidden access
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. At some case, the fetchLoggedInUserDetails would throw error at random, if that happens, navigating to any route should redirect to /login page and console.log the error
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
