@@ -11,9 +11,10 @@ const UserService = {
         return {
             name: faker.name.findName(),
             email: faker.internet.email(),
+            // role: 'regular'
             role: Math.random() > 0.5 ? 'regular' : 'admin'
         }
-    }
+    } 
 }
 
 export default UserService;
